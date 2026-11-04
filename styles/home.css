@@ -1,0 +1,42 @@
+* {
+    font-family: 'Josefin-Slab';
+    margin: 0;
+    padding: 0;
+}
+
+.header-container{
+    background-color: black;
+    height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.Santos_Logo img{
+    width: 75px;
+    margin: 10px;
+}
+
+.botoes button{
+    border-radius: 40px;
+    margin: 15px;
+    color: white;
+    background-color: black;
+    border: none;
+    font-family: 'Josefin-Slab';
+    
+}
+
+.home-fundo {
+    background-image: url("../img/wallpaper_tela_home.webp");
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    filter: brightness(0.6);
+}
+
+.nascer-viver {
+    width: 300px;
+    position: absolute;
+}
