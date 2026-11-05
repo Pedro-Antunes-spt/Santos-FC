@@ -4,28 +4,29 @@
     padding: 0;
 }
 
-.header-container{
+.header-container {
     background-color: black;
     height: 85px;
+    width: 1536px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+
 }
 
-.Santos_Logo img{
+.Santos_Logo img {
     width: 75px;
     margin: 10px;
 }
 
-.botoes button{
+.botoes button {
     border-radius: 40px;
     margin: 15px;
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: white;
     border: none;
-    font-family: 'Josefin-Slab';
-    
+    text-align: center;
+
 }
 
 .home-fundo {
@@ -36,7 +37,15 @@
     filter: brightness(0.6);
 }
 
+.nascer-viver img {
+    margin: 80px;
+    width: 470px;
+    margin-left: 150px;
+    align-items: center
+    
+}
+
 .nascer-viver {
-    width: 300px;
-    position: absolute;
+    display: flex;
+    filter: brightness(0.6);
 }
