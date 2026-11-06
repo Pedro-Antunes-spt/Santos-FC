@@ -8,6 +8,8 @@
 }
 
 
+
+
 .header-container {
     background-color: black;
     height: 85px;
@@ -15,7 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    border-bottom: 2px solid white;
 }
 
 .Santos_Logo img {
@@ -41,17 +43,15 @@
 .home-fundo {
     background-image: url("../img/wallpaper_tela_home.webp");
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     background-size: cover;
     filter: brightness(0.6);
 }
 
 .nascer-viver img {
     margin: 80px;
-    width: 470px;
+    width: 70vh;
     margin-left: 150px;
-    align-items: center
-    
 }
 
 .nascer-viver {
@@ -62,15 +62,24 @@
 .historia {
     background-color: black;
     height: 100vh;
-}
-
-.historia {
-    width: 100vw;;
+    width: 100%;
 }
 
 .titulo-historia {
     margin-left: 120px;
     display: flex;
-
+    padding: 80px 15px;
+    font-size: 40px;
+    position: relative;
     color: white;
 }
+
+.linha-divisoria {
+    background-color: goldenrod;
+    position: absolute;
+    height: 1px;
+    width: 170px;
+    bottom: 55px;
+    }
+
+    
