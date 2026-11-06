@@ -1,13 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap');
+
 * {
-    font-family: 'Josefin-Slab';
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Slab', serif;
 }
+
 
 .header-container {
     background-color: black;
     height: 85px;
-    width: 1536px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -25,8 +29,13 @@
     color: black;
     background-color: white;
     border: none;
+    align-self: center;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 10px 20px;
+    cursor: pointer;
     text-align: center;
-
+    width: 130px; 
 }
 
 .home-fundo {
@@ -48,4 +57,20 @@
 .nascer-viver {
     display: flex;
     filter: brightness(0.6);
+}
+
+.historia {
+    background-color: black;
+    height: 100vh;
+}
+
+.historia {
+    width: 100vw;;
+}
+
+.titulo-historia {
+    margin-left: 120px;
+    display: flex;
+
+    color: white;
 }
