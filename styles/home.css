@@ -82,4 +82,10 @@
     bottom: 55px;
     }
 
+    .historia-imagem img {
+        display: flex;
+        margin-left: 750px;
+        border-radius: 30px;
+    }
+
     
