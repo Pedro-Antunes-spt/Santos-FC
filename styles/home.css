@@ -61,7 +61,7 @@
 
 .historia {
     background-color: black;
-    height: 100vh;
+    height: 90vh;
     width: 100%;
 }
 
@@ -85,7 +85,7 @@
 .texto-imagem {
     display: flex;
     justify-content: space-around;
-    
+
 }
 
 .historia-imagem img {
@@ -93,6 +93,9 @@
     position: relative;
     height: 55vh;
     width: 45vw;
+    border-bottom: 5px;
+    border-bottom-color: white;
+    border-bottom-style: double;
 }
 
 .historia-imagem {
@@ -123,17 +126,18 @@
 }
 
 .historia-texto::-webkit-scrollbar-thumb {
-    background: #b89b55;
+    background: goldenrod;
     border-radius: 10px;
 }
 
 .historia-texto::-webkit-scrollbar-thumb:hover {
-    background: #d4b76e;
+    background: goldenrod;
 }
 
 .titulos {
-    height: 100vh;
+    height: 80vh;
     width: 100%;
+    background-color: gray;
 }
 
 
@@ -154,8 +158,28 @@
     bottom: 55px;
 }
 
-.lista-titulo{
-    width: 300px;
-    height: 250px;
-    background-color: gray;
+.lista-card {
+    width: 90%;
+    height: 270px;
+    background-color: black;
+    border-radius: 20px;
+    margin-left: 80px;
+    border-bottom: #222;
+}
+
+.lista-texto {
+    font-size: 25px;
+    margin-left: 35px;
+    margin: 30px;
+    align-items: center;
+    color: white;
+}
+
+.foto-taça img{
+    width: 150px;
+    height: 150px;
+}
+
+.desc-taça {
+    color: white;
 }
