@@ -175,11 +175,59 @@
     color: white;
 }
 
-.foto-taça img{
-    width: 150px;
-    height: 150px;
+
+
+
+.lista-card {
+    width: 90%;
+    min-height: 240px;
+    background-color: #000;
+
+    border-radius: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    padding: 25px 10px;
 }
 
-.desc-taça {
+
+
+.card-titulo {
+    flex: 1;
+    min-width: 0;
+    height: 290px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
     color: white;
+
+    
+}
+
+.card-titulo img {
+    width: 100px;
+    height: 125px;
+
+    object-fit: contain;
+
+    margin-bottom: 10px;
+}
+
+.card-titulo h3 {
+    font-size: 22px;
+    margin: 0 0 5px;
+    color: white;
+}
+
+.linha-divisoria-cinza {
+    background-color: gray;
+    height: 200px;
+    width: 1px;
+    bottom: 55px;
 }
