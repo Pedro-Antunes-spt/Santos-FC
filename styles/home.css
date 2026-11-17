@@ -234,7 +234,7 @@
 
 .idolos {
     width: 100%;
-    height: 80vh;
+    height: 75vh;
     background-color: #000;
 }
 
@@ -243,4 +243,39 @@
     font-size: 25px;
     position: relative;
     margin-left: 120px;
+    
+}
+
+.card-idolo img {
+    width: 145px;
+    height: 145px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+    border: 3px solid goldenrod;
+
+    margin-bottom: 15px;
+}
+
+.card-idolo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    text-align: center;
+    color: white;
+
+    flex: 1;
+}
+
+.lista-idolos {
+    
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    gap: 0px;
 }
