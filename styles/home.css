@@ -88,19 +88,15 @@
 
 }
 
-.historia-imagem img {
-    border-radius: 30px;
-    position: relative;
-    height: 55vh;
-    width: 45vw;
-    border-bottom: 5px;
-    border-bottom-color: white;
-    border-bottom-style: double;
+.imagem-estadio {
+    flex: 1;
 }
 
-.historia-imagem {
-    margin-right: 40px;
-    margin: -60px;
+.imagem-estadio img {
+    width: 40%;
+    height: 55vh;
+    object-fit: cover;
+    border-radius: 20px;
 }
 
 .historia-texto {
@@ -153,7 +149,7 @@
 .linha-divisoria-preto {
     background-color: black;
     position: absolute;
-    height: 2px;
+    height: 3px;
     width: 170px;
     bottom: 55px;
 }
@@ -307,8 +303,53 @@
 }
 
 .estadio {
-    background-color: white;
+    background-color: gray;
     height: 90vh;
+}
+
+.corpo-estadio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: -40px;
+}
+
+.info-estadio {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 400px;
+    margin-left: 125px;
+    height: -40px;
+}
+
+.item-estadio {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icone-estadio {
+    color: goldenrod;
+    font-size: 38px;
+    width: 45px;
+    text-align: center;
+}
+
+.texto-estadio {
+    border-left: 3px solid goldenrod;
+    padding-left: 20px;
+}
+
+.texto-estadio h3 {
+    font-size: 23px;
+    color: black;
+    margin-bottom: 4px;
+}
+
+.texto-estadio p {
+    font-size: 21px;
+    color: black;
 }
 
 .transicao-cinza-preto {
@@ -324,7 +365,7 @@
 
 .transicao-preto-cinza {
     width: 100%;
-    height: 170px;
+    height: 150px;
 
     background: linear-gradient(
         to bottom,
@@ -333,13 +374,4 @@
     );
 }
 
-.transicao-preto-branco {
-    width: 100%;
-    height: 170px;
 
-    background: linear-gradient(
-        to bottom,
-        black,
-        white
-    );
-}
