@@ -470,4 +470,34 @@
     }
 }
 
+.scroll-torcida {
+    width: 520px;
+    height: 300px;
+    background-color: #222;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    overflow-y: auto;
+    position: relative;
+    border-radius: 6px;
+}
+
+.scroll-torcida::-webkit-scrollbar {
+    width: 7px;
+}
+
+.scroll-torcida::-webkit-scrollbar-track {
+    background: #222;
+    border-radius: 10px;
+}
+
+.scroll-torcida::-webkit-scrollbar-thumb {
+    background: goldenrod;
+    border-radius: 10px;
+}
+
+.scroll-torcida::-webkit-scrollbar-thumb:hover {
+    background: goldenrod;
+}
+
 
