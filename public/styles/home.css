@@ -1,0 +1,503 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Slab', serif;
+}
+
+
+
+
+.header-container {
+    background-color: black;
+    height: 85px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid white;
+}
+
+.Santos_Logo img {
+    width: 75px;
+    margin: 10px;
+}
+
+.botoes button {
+    border-radius: 40px;
+    margin: 15px;
+    color: black;
+    background-color: white;
+    border: none;
+    align-self: center;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: center;
+    width: 130px;
+}
+
+.home-fundo {
+    background-image: url("../img/wallpaper_tela_home.webp");
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    filter: brightness(0.6);
+}
+
+.nascer-viver img {
+    margin: 80px;
+    width: 70vh;
+    margin-left: 150px;
+}
+
+.nascer-viver {
+    display: flex;
+    filter: brightness(0.6);
+}
+
+.historia {
+    background-color: black;
+    height: 90vh;
+    width: 100%;
+}
+
+.historia-imagem img {
+  border-radius: 30px;
+  border-bottom: 6px double white;
+}
+
+.titulo-branco {
+    margin-left: 120px;
+    display: flex;
+    padding: 80px 15px;
+    font-size: 40px;
+    position: relative;
+    color: white;
+}
+
+.linha-divisoria {
+    background-color: goldenrod;
+    position: absolute;
+    height: 1px;
+    width: 170px;
+    bottom: 55px;
+}
+
+.texto-imagem {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.historia-texto {
+    width: 620px;
+    height: 300px;
+    background-color: #222;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    overflow-y: auto;
+    position: relative;
+    font-size: 19px;
+    border-radius: 6px;
+}
+
+.historia-texto::-webkit-scrollbar {
+    width: 7px;
+}
+
+.historia-texto::-webkit-scrollbar-track {
+    background: #222;
+    border-radius: 10px;
+}
+
+.historia-texto::-webkit-scrollbar-thumb {
+    background: goldenrod;
+    border-radius: 10px;
+}
+
+.historia-texto::-webkit-scrollbar-thumb:hover {
+    background: goldenrod;
+}
+
+.titulos {
+    height: 80vh;
+    width: 100%;
+    background-color: gray;
+}
+
+
+.titulo-preto {
+    margin-left: 120px;
+    display: flex;
+    padding: 80px 15px;
+    font-size: 40px;
+    position: relative;
+    color: black;
+}
+
+.linha-divisoria-preto {
+    background-color: black;
+    position: absolute;
+    height: 3px;
+    width: 170px;
+    bottom: 55px;
+}
+
+.lista-card {
+    width: 90%;
+    height: 270px;
+    background-color: black;
+    border-radius: 20px;
+    margin-left: 80px;
+    border-bottom: #222;
+}
+
+.lista-texto {
+    font-size: 25px;
+    margin-left: 35px;
+    margin: 30px;
+    align-items: center;
+    color: white;
+}
+
+
+
+
+.lista-card {
+    width: 90%;
+    min-height: 240px;
+    background-color: #000;
+
+    border-radius: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    padding: 25px 10px;
+}
+
+
+
+.card-titulo {
+    flex: 1;
+    min-width: 0;
+    height: 290px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    color: white;
+}
+
+.card-titulo img {
+    width: 100px;
+    height: 125px;
+
+    object-fit: contain;
+
+    margin-bottom: 10px;
+}
+
+.card-titulo h3 {
+    font-size: 22px;
+    margin: 0 0 5px;
+    color: white;
+}
+
+.linha-divisoria-cinza {
+    background-color: gray;
+    height: 200px;
+    width: 1px;
+    bottom: 55px;
+}
+
+.idolos {
+    width: 100%;
+    height: 75vh;
+    background-color: black;
+}
+
+.introducao-idolo {
+    color: white;
+    font-size: 25px;
+    position: relative;
+    margin-left: 120px;
+    ;
+}
+
+.card-idolo img {
+    width: 145px;
+    height: 145px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+    border: 3px solid goldenrod;
+
+    margin-bottom: 15px;
+}
+
+.card-idolo {
+    flex: 0 0 260px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+    color: white;
+}
+
+.lista-idolos {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: flex-start;
+    align-items: center;
+
+    gap: 40px;
+    width: max-content;
+}
+
+.carrossel-idolos {
+    width: 98%;
+    margin-left: 20px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+
+    padding-bottom: 20px;
+}
+
+.carrossel-idolos::-webkit-scrollbar {
+    height: 6px;
+}
+
+.carrossel-idolos::-webkit-scrollbar-thumb {
+    background-color: #c9a44c;
+    border-radius: 10px;
+}
+
+.carrossel-idolos::-webkit-scrollbar-track {
+    background-color: #333;
+}
+
+.estadio {
+    background-color: gray;
+    min-height: 90vh;
+    padding-bottom: 40px;
+}
+    
+.imagem-estadio p {
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.imagem-estadio {
+    flex: 1;
+}
+
+.imagem-estadio img {
+    width: 100%;
+    height: 55vh;
+    object-fit: cover;
+    border-radius: 20px;
+    border-bottom: double 9px;
+    border-color: gray;
+}
+
+.corpo-estadio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 85%;
+    margin: -30px auto 0;
+    padding: 30px 50px;
+    gap: 50px;
+
+    background-color: black;
+    border-radius: 25px;
+}
+
+.info-estadio {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    width: 35%;
+    margin-left: 0;
+}
+
+.item-estadio {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icone-estadio {
+    color: goldenrod;
+    font-size: 38px;
+    width: 45px;
+    text-align: center;
+}
+
+.texto-estadio {
+    font-size: 23px;
+    color: white;
+    margin-bottom: 4px;
+}
+
+.texto-estadio h3 {
+    font-size: 21px;
+    color: white;
+}
+
+.texto-estadio p {
+    font-size: 21px;
+    color: black;
+}
+
+.transicao-cinza-preto {
+    width: 100%;
+    height: 170px;
+
+    background: linear-gradient(
+        to bottom,
+        gray,
+        black
+    );
+}
+
+.transicao-preto-cinza {
+    width: 100%;
+    height: 150px;
+
+    background: linear-gradient(
+        to bottom,
+        black,
+        gray
+    );
+}
+
+
+.torcida-jovem {
+    background-color: black;
+    width: 100%;
+    min-height: 80vh;
+    padding-bottom: 50px;
+}
+
+.conteudo-torcida {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    margin: 0 auto;
+    gap: 60px;
+}
+
+.texto-torcida {
+    width: 40%;
+    color: white;
+}
+
+.texto-torcida h2 {
+    color: goldenrod;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.texto-torcida p {
+    font-size: 22px;
+    line-height: 1.5;
+}
+
+.dados-torcida {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid goldenrod;
+}
+
+.dados-torcida p {
+    margin-bottom: 10px;
+}
+
+.dados-torcida strong {
+    color: goldenrod;
+}
+
+.imagem-torcida {
+    width: 65%;
+    margin-bottom: 30px;
+}
+
+.imagem-torcida img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 20px;
+    border-bottom: double 9px;
+    border-color: gray
+}
+
+@media (max-width: 768px) {
+    .conteudo-torcida {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .texto-torcida,
+    .imagem-torcida {
+        width: 100%;
+    }
+
+    .imagem-torcida img {
+        height: 280px;
+    }
+}
+
+.scroll-torcida {
+    width: 520px;
+    height: 300px;
+    background-color: #222;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    overflow-y: auto;
+    position: relative;
+    border-radius: 6px;
+}
+
+.scroll-torcida::-webkit-scrollbar {
+    width: 7px;
+}
+
+.scroll-torcida::-webkit-scrollbar-track {
+    background: #222;
+    border-radius: 10px;
+}
+
+.scroll-torcida::-webkit-scrollbar-thumb {
+    background: goldenrod;
+    border-radius: 10px;
+}
+
+.scroll-torcida::-webkit-scrollbar-thumb:hover {
+    background: goldenrod;
+}
+
+
