@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - Santos FC</title>
-    <link rel="stylesheet" href="../styles/cadastro.css">
+    <link rel="stylesheet" href="../public/css/cadastrousuario.css">
 </head>
 <body>
     <div class="tela-cadastro">
 
         <div class="imagem-cadastro">
-            <img src="../img/images (1).jpg" alt="Santos FC">
+            <img src="../public/assets/imgs/images (1).jpg" alt="Santos FC">
         </div>
 
         <div class="area-cadastro">
@@ -18,16 +18,27 @@
             <h1>Cadastrar</h1>
 
             <form>
-                <input type="text" placeholder="Nome completo" required>
+                <input type="text" id="ipt_nome"
+                    placeholder="Nome completo" required>
 
-                <input type="email" placeholder="E-mail" required>
+                <input type="email" id="ipt_senha"
+                    placeholder="E-mail" required>
 
-                <input type="password" placeholder="Criar senha" required>
+                <input type="password" id="ipt_senha"
+                    placeholder="Criar senha" required>
 
-                <input type="password" placeholder="Confirmar senha" required>
+                <input type="password" id="ipt_confirmar"
+                    placeholder="Confirmar senha" required>
 
-                <button type="submit">Cadastrar</button>
+                <button type="" onclick="cadastrar()">Cadastrar</button>
+
+                <div id="mensagem_erro"></div>
             </form>
+
+             <p class="link-login">
+                Já possui uma conta?
+                <a href="loginusuario.html">Entrar</a>
+            </p>
 
         </div>
 
@@ -36,3 +47,86 @@
     
 </body>
 </html>
+<script>
+
+
+function cadastrar() {
+
+    // Recuperando os valores dos inputs
+    let nome = ipt_nome.value.trim();
+    let email = ipt_email.value.trim();
+    let senha = ipt_senha.value;
+    let confirmacaoSenha = ipt_confirmar.value;
+
+    let mensagem = document.getElementById("mensagem_erro");
+
+    // Verificando campos em branco
+    if (
+        nome == "" ||
+        email == "" ||
+        senha == "" ||
+        confirmacaoSenha == ""
+    ) {
+        mensagem.innerHTML = "Preencha todos os campos!";
+        return false;
+    }
+
+    // Verificando o tamanho da senha
+    if (senha.length < 8) {
+        mensagem.innerHTML =
+            "A senha deve possuir pelo menos 8 caracteres!";
+        return false;
+    }
+
+    // Verificando se as senhas são iguais
+    if (senha != confirmacaoSenha) {
+        mensagem.innerHTML = "As senhas não coincidem!";
+        return false;
+    }
+
+    // Enviando os dados para a API
+    fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            nomeServer: nome,
+            emailServer: email,
+            senhaServer: senha
+        })
+    })
+    .then(function (resposta) {
+
+        console.log("Resposta: ", resposta);
+
+        if (resposta.ok) {
+
+            mensagem.innerHTML =
+                "Cadastro realizado com sucesso!";
+
+            setTimeout(function () {
+                window.location = "loginusuario.html";
+            }, 2000);
+
+        } else {
+
+            mensagem.innerHTML =
+                "Não foi possível realizar o cadastro.";
+
+        }
+
+    })
+    .catch(function (erro) {
+
+        console.log("ERRO: ", erro);
+
+        mensagem.innerHTML =
+            "Erro ao conectar com o servidor.";
+
+    });
+
+    return false;
+}
+
+</script>
