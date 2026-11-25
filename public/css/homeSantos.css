@@ -41,7 +41,7 @@
 }
 
 .home-fundo {
-    background-image: url("../img/wallpaper_tela_home.webp");
+    background-image: url("../assets/imgs/wallpaper_tela_home.webp");
     height: 100vh;
     width: 100%;
     background-size: cover;
