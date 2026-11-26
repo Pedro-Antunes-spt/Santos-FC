@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Slab', serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: black;
+}
+
+/* ================= BARRA LATERAL ================= */
+
+.lado-esquerdo {
+    width: 18%;
+    height: 100vh;
+    background-color: #111111;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: white;
+}
+
+.conteudo-esquerda {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    padding: 30px 15px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #555555;
+}
+
+.logo img {
+    width: 100px;
+}
+
+.logo h2 {
+    font-size: 28px;
+}
+
+/* OPÇÕES DA BARRA LATERAL */
+
+.itens-selecao {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.img-texto {
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.img-texto:hover {
+    background-color: #333333;
+}
+
+.ativo,
+.ativo:hover {
+    background-color: goldenrod;
+    color: black;
+}
+
+/* BOTÃO SAIR */
+
+.itens-botao {
+    width: 100%;
+    margin-top: auto;
+}
+
+.itens-botao button {
+    width: 100%;
+    padding: 12px;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 8px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.itens-botao button:hover {
+    background-color: white;
+    color: black;
+}
+
+/* ================= CONTEÚDO PRINCIPAL ================= */
+
+main {
+    margin-left: 18%;
+    width: 82%;
+}
+
+.container {
+    padding: 25px;
+}
+
+.lado-direito {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* ================= TOPO DA DASHBOARD ================= */
+
+.topo-dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.titulo-dashboard h1 {
+    font-size: 40px;
+    margin-bottom: 8px;
+}
+
+.titulo-dashboard p {
+    font-size: 18px;
+    color: #666666;
+}
+
+/* ================= MÉTRICAS ================= */
+
+.grafico-metrica {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.titulo-metrica {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.metricas {
+    display: flex;
+    gap: 10px;
+}
+
+.card-metrica-cinza,
+.card-metrica-preto,
+.card-metrica-dourado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 125px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.card-metrica-cinza {
+    background-color: #cccccc;
+    color: black;
+}
+
+.card-metrica-preto {
+    background-color: #444444;
+    color: white;
+}
+
+.card-metrica-dourado {
+    background-color: goldenrod;
+    color: black;
+}
+
+/* ================= KPIs ================= */
+
+.kpi-row {
+    display: flex;
+    gap: 20px;
+}
+
+.kpi {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 15px;
+    padding: 20px 10px;
+    background-color: white;
+    border: 1px solid #dddddd;
+    border-top: 4px solid goldenrod;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px #0000000d;
+}
+
+.kpi-titulo {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.kpi-info {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.kpi-descricao {
+    font-size: 15px;
+    color: #666666;
+    text-align: center;
+}
+
+/* ================= ÁREA DOS GRÁFICOS ================= */
+
+.analise-operacional {
+    display: flex;
+    gap: 20px;
+}
+
+.grafico-container,
+.container-grafico-2 {
+    flex: 1;
+    min-width: 0;
+}
+
+.area-grafico,
+.area-grafico-2 {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    padding: 20px;
+    height: 330px;
+    box-shadow: 0 3px 8px #0000000d;
+}
+
+.grafico-cabecalho {
+    margin-bottom: 20px;
+}
+
+.grafico-cabecalho h3 {
+    font-size: 24px;
+}
+
+/* GRÁFICO DE BARRAS */
+
+.canvas-container {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+}
+
+/* GRÁFICO DOUGHNUT */
+
+.conteudo-grafico-rosquinha {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    min-height: 0;
+    gap: 15px;
+}
+
+.canvas-container-2 {
+    position: relative;
+    width: 55%;
+    height: 100%;
+    min-width: 0;
+}
+
+/* LEGENDAS DO DOUGHNUT */
+
+.legendas-grafico-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    width: 40%;
+}
+
+.linha-legenda {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-left: 12px;
+}
+
+.dados-legenda {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.dados-legenda strong {
+    font-size: 25px;
+}
+
+.dados-legenda span {
+    font-size: 16px;
+    color: #666666;
+}
+
+.linha-legenda h4 {
+    font-size: 17px;
+}
+
+.elite {
+    border-left: 5px solid goldenrod;
+}
+
+.intermediario {
+    border-left: 5px solid #444444;
+}
+
+.basico {
+    border-left: 5px solid #cccccc;
+}
+
+/* ================= LISTAGEM DE JOGADORES ================= */
+
+.container-jogadores {
+    background-color: white;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 3px 8px #0000000d;
+}
+
+.card-titulo {
+    margin-bottom: 20px;
+}
+
+.card-titulo h3 {
+    font-size: 24px;
+}
+
+.card-relatorio {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.linha-titulo,
+.linha-relatorio {
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+}
+
+.linha-titulo {
+    background-color: #111111;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.linha-titulo span,
+.linha-relatorio span {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+.linha-relatorio {
+    font-size: 18px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.linha-relatorio:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+.linha-relatorio:hover {
+    background-color: #e5e5e5;
+}

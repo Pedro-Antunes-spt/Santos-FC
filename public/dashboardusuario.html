@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/dashboardusuario.css">
 
     <title>Santos FC | Dashboard</title>
 
@@ -21,21 +21,20 @@
         <div class="conteudo-esquerda">
 
             <div class="logo">
-                <img src="./assets/imgs/escudo.png" alt="Santos FC">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Santos_Logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail_unscaled&_=20230206125350"
+                    alt="Santos FC">
                 <h2>SANTOS FC</h2>
             </div>
 
             <div class="itens-selecao">
 
-                <div class="img-texto"
-                    onclick="window.location.href='cadastrojogador.html'">
+                <div class="img-texto" onclick="window.location.href='cadastrojogador.html'">
 
                     <span>Cadastrar jogador</span>
 
                 </div>
 
-                <div class="img-texto ativo"
-                    onclick="window.location.href='dashboard.html'">
+                <div class="img-texto ativo" onclick="window.location.href='dashboard.html'">
 
                     <span>Dashboard</span>
 
@@ -46,6 +45,8 @@
             <div class="itens-botao">
                 <button onclick="sair()">Sair</button>
             </div>
+
+
 
         </div>
 
@@ -283,6 +284,117 @@
             sessionStorage.clear();
             window.location = "loginusuario.html";
         }
+
+        let ctx = document.getElementById('grafico_barras');
+
+        let graficoBarras = new Chart(ctx, {
+
+            type: 'bar',
+
+            data: {
+                labels: ['GOL', 'ZAG', 'LAT', 'VOL', 'MEI', 'ATA'],
+
+                datasets: [{
+                    label: 'Quantidade de jogadores',
+                    data: [3, 5, 4, 4, 4, 8],
+                    backgroundColor: 'goldenrod',
+                    borderRadius: 5,
+                    borderWidth: 0
+                }]
+            },
+
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    },
+
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        let ctx2 = document.getElementById('grafico_doughnut');
+
+        let graficoDoughnut = new Chart(ctx2, {
+
+            type: 'doughnut',
+
+            data: {
+                labels: ['Elite', 'Intermediário', 'Básico'],
+
+                datasets: [{
+                    data: [10, 12, 6],
+
+                    backgroundColor: [
+                        'goldenrod',
+                        '#444444',
+                        '#cccccc'
+                    ],
+
+                    borderWidth: 0
+                }]
+            },
+
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '75%',
+
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+
+        let elite = 10;
+        let intermediario = 12;
+        let basico = 6;
+
+        let total = elite + intermediario + basico;
+
+        qtd_elite.innerHTML = elite;
+        qtd_intermediario.innerHTML = intermediario;
+        qtd_basico.innerHTML = basico;
+
+        porcentagem_elite.innerHTML =
+            (elite / total * 100).toFixed(1) + "%";
+
+        porcentagem_intermediario.innerHTML =
+            (intermediario / total * 100).toFixed(1) + "%";
+                                                                                                                    
+
+        porcentagem_basico.innerHTML =
+            (basico / total * 100).toFixed(1) + "%";
+
+
+        // 6. Preenchimento dos KPIs (CÓDIGO 4)
+
+        kpi_usuarios.innerHTML = 12;
+        kpi_jogadores.innerHTML = total;
+        kpi_favoritos.innerHTML = 16;
+
+    </script>
+
 
     </script>
 
