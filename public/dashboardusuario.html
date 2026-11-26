@@ -296,7 +296,7 @@
 
                 datasets: [{
                     label: 'Quantidade de jogadores',
-                    data: [3, 5, 4, 4, 4, 8],
+                    data: [0, 0, 0, 0, 0, 0],
                     backgroundColor: 'goldenrod',
                     borderRadius: 5,
                     borderWidth: 0
@@ -340,7 +340,7 @@
                 labels: ['Elite', 'Intermediário', 'Básico'],
 
                 datasets: [{
-                    data: [10, 12, 6],
+                    data: [0, 0, 0],
 
                     backgroundColor: [
                         'goldenrod',
@@ -366,33 +366,177 @@
         });
 
 
-        let elite = 10;
-        let intermediario = 12;
-        let basico = 6;
+        function buscarKpis() {
 
-        let total = elite + intermediario + basico;
+            fetch("/dashboard/kpis")
+                .then(function (resposta) {
 
-        qtd_elite.innerHTML = elite;
-        qtd_intermediario.innerHTML = intermediario;
-        qtd_basico.innerHTML = basico;
+                    if (resposta.ok) {
+                        resposta.json().then(function (dados) {
 
-        porcentagem_elite.innerHTML =
-            (elite / total * 100).toFixed(1) + "%";
+                            kpi_usuarios.innerHTML = dados[0].totalUsuarios;
+                            kpi_jogadores.innerHTML = dados[0].totalJogadores;
+                            kpi_favoritos.innerHTML = dados[0].totalFavoritos;
 
-        porcentagem_intermediario.innerHTML =
-            (intermediario / total * 100).toFixed(1) + "%";
-                                                                                                                    
+                        });
+                    } else {
+                        console.log("Erro ao buscar KPIs!");
+                    }
 
-        porcentagem_basico.innerHTML =
-            (basico / total * 100).toFixed(1) + "%";
+                })
+                .catch(function (erro) {
+                    console.log(erro);
+                });
+        }
 
+        function buscarPosicoes() {
 
-        // 6. Preenchimento dos KPIs (CÓDIGO 4)
+            fetch("/dashboard/posicoes")
+                .then(function (resposta) {
 
-        kpi_usuarios.innerHTML = 12;
-        kpi_jogadores.innerHTML = total;
-        kpi_favoritos.innerHTML = 16;
+                    if (resposta.ok) {
+                        resposta.json().then(function (dados) {
 
+                            let quantidades = [];
+
+                            for (let i = 0; i < dados.length; i++) {
+                                quantidades.push(dados[i].quantidade);
+                            }
+
+                            graficoBarras.data.datasets[0].data = quantidades;
+
+                            graficoBarras.update();
+
+                        });
+                    } else {
+                        console.log("Erro ao buscar posições!");
+                    }
+
+                })
+                .catch(function (erro) {
+                    console.log(erro);
+                });
+        }
+
+        function buscarClassificacao() {
+
+            fetch("/dashboard/classificacao")
+                .then(function (resposta) {
+
+                    if (resposta.ok) {
+                        resposta.json().then(function (dados) {
+
+                            let elite = Number(dados[0].elite);
+                            let intermediario = Number(dados[0].intermediario);
+                            let basico = Number(dados[0].basico);
+
+                            let total = elite + intermediario + basico;
+
+                            graficoDoughnut.data.datasets[0].data = [
+                                elite,
+                                intermediario,
+                                basico
+                            ];
+
+                            graficoDoughnut.update();
+
+                            qtd_elite.innerHTML = elite;
+                            qtd_intermediario.innerHTML = intermediario;
+                            qtd_basico.innerHTML = basico;
+
+                            if (total > 0) {
+
+                                porcentagem_elite.innerHTML =
+                                    (elite / total * 100).toFixed(1) + "%";
+
+                                porcentagem_intermediario.innerHTML =
+                                    (intermediario / total * 100).toFixed(1) + "%";
+
+                                porcentagem_basico.innerHTML =
+                                    (basico / total * 100).toFixed(1) + "%";
+
+                            } else {
+
+                                porcentagem_elite.innerHTML = "0%";
+                                porcentagem_intermediario.innerHTML = "0%";
+                                porcentagem_basico.innerHTML = "0%";
+
+                            }
+
+                        });
+                    } else {
+                        console.log("Erro ao buscar classificação!");
+                    }
+
+                })
+                .catch(function (erro) {
+                    console.log(erro);
+                });
+        }
+
+        function buscarUltimosJogadores() {
+
+            fetch("/dashboard/ultimosJogadores")
+                .then(function (resposta) {
+
+                    if (resposta.ok) {
+                        resposta.json().then(function (dados) {
+
+                            lista_jogadores.innerHTML = "";
+
+                            for (let i = 0; i < dados.length; i++) {
+
+                                let jogador = dados[i];
+
+                                let linha = document.createElement("div");
+
+                                linha.className = "linha-relatorio";
+
+                                let informacoes = [
+                                    jogador.idJogador,
+                                    jogador.nome,
+                                    jogador.nomePosicao,
+                                    jogador.idade,
+                                    jogador.numeroCamisa,
+                                    jogador.notaGeral
+                                ];
+
+                                for (let j = 0; j < informacoes.length; j++) {
+
+                                    let coluna = document.createElement("span");
+
+                                    coluna.textContent = informacoes[j];
+
+                                    linha.appendChild(coluna);
+                                }
+
+                                lista_jogadores.appendChild(linha);
+                            }
+
+                            if (dados.length == 0) {
+                                lista_jogadores.textContent =
+                                    "Nenhum jogador cadastrado.";
+                            }
+
+                        });
+                    } else {
+                        console.log("Erro ao buscar jogadores!");
+                    }
+
+                })
+                .catch(function (erro) {
+                    console.log(erro);
+                });
+        }
+
+        if (sessionStorage.ID_USUARIO) {
+
+            buscarKpis();
+            buscarPosicoes();
+            buscarClassificacao();
+            buscarUltimosJogadores();
+
+        }
     </script>
 
 
