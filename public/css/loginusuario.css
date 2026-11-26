@@ -93,3 +93,16 @@ body {
     height: 100%;
     object-fit: cover;
 }
+
+#mensagem_erro {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+#mensagem_erro:empty {
+    display: none;
+}

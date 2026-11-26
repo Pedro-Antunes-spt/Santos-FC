@@ -1,11 +1,14 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Santos FC</title>
     <link rel="stylesheet" href="./css/loginusuario.css">
 </head>
+
 <body>
     <div class="tela-login">
 
@@ -15,15 +18,17 @@
 
             <form>
 
-                <input type="email"
-                       placeholder="E-mail"
-                       required> 
+                <input type="email" id="ipt_email"
+                    placeholder="E-mail" required>
 
-                <input type="password"
-                       placeholder="Senha"
-                       required>
+                <input type="password" id="ipt_senha"
+                    placeholder="Senha" required>
 
-                <button type="submit">Entrar</button>
+                <button type="button" id="btn_entrar" onclick="entrar()">
+                    Entrar
+                </button>
+
+                <div id="mensagem_erro"></div>
 
             </form>
 
@@ -31,9 +36,121 @@
 
         <div class="imagem-login">
             <img src="./assets/imgs/images (1).jpg"
-                 alt="Vila Belmiro">
+                alt="Vila Belmiro">
         </div>
 
     </div>
+
+    <script>
+
+        function entrar() {
+
+            // Recuperando os valores dos inputs
+            let email = ipt_email.value.trim();
+            let senha = ipt_senha.value;
+
+            let mensagem = document.getElementById("mensagem_erro");
+
+            mensagem.style.color = "red";
+            mensagem.style.backgroundColor = "#fee2e2";
+
+            // Verificando campos vazios
+            if (email == "" || senha == "") {
+                mensagem.innerHTML = "Preencha todos os campos!";
+                return false;
+            }
+
+            // Verificando se o e-mail possui @
+            if (!email.includes("@")) {
+                mensagem.innerHTML = "O e-mail deve conter @!";
+                return false;
+            }
+
+            // Verificando o formato do e-mail
+            if (!ipt_email.checkValidity()) {
+                mensagem.innerHTML = "Informe um e-mail válido!";
+                return false;
+            }
+
+            // Impedindo tentativas duplicadas
+            if (btn_entrar.disabled) {
+                return false;
+            }
+
+            btn_entrar.disabled = true;
+
+            mensagem.style.color = "black";
+            mensagem.style.backgroundColor = "#eeeeee";
+            mensagem.innerHTML = "Realizando login...";
+
+            // Enviando os dados para a API
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: email,
+                    senhaServer: senha
+                })
+            })
+            .then(function (resposta) {
+
+                if (resposta.ok) {
+
+                    resposta.json().then(function (dados) {
+
+                        // Armazenando os dados do usuário
+                        sessionStorage.ID_USUARIO = dados.idUsuario;
+                        sessionStorage.NOME_USUARIO = dados.nome;
+                        sessionStorage.EMAIL_USUARIO = dados.email;
+
+                        mensagem.style.color = "green";
+                        mensagem.style.backgroundColor = "#dcfce7";
+
+                        mensagem.innerHTML =
+                            "Login realizado com sucesso!";
+
+                        setTimeout(function () {
+                            window.location = "index.html";
+                        }, 2000);
+
+                    });
+
+                } else {
+
+                    mensagem.style.color = "red";
+                    mensagem.style.backgroundColor = "#fee2e2";
+
+                    if (resposta.status == 403) {
+                        mensagem.innerHTML = "E-mail ou senha inválidos!";
+                    } else {
+                        mensagem.innerHTML = "Não foi possível realizar o login.";
+                    }
+
+                    btn_entrar.disabled = false;
+
+                }
+
+            })
+            .catch(function (erro) {
+
+                console.log("ERRO: ", erro);
+
+                mensagem.style.color = "red";
+                mensagem.style.backgroundColor = "#fee2e2";
+
+                mensagem.innerHTML =
+                    "Erro ao conectar com o servidor.";
+
+                btn_entrar.disabled = false;
+
+            });
+
+            return false;
+        }
+
+    </script>
+
 </body>
 </html>
