@@ -22,8 +22,6 @@ function cadastrar(fkUsuario, fkPosicao, nome, numeroCamisa, idade, notaGeral) {
 
 function listar(fkUsuario) {
 
-    console.log("ACESSEI O JOGADOR MODEL - LISTAR");
-
     let instrucaoSql = `
         SELECT
             idJogador,
@@ -31,18 +29,53 @@ function listar(fkUsuario) {
             nomePosicao,
             idade,
             numeroCamisa,
-            notaGeral
+            notaGeral,
+            idFavorito
         FROM jogador_cadastrado
         JOIN posicao
             ON fkPosicao = idPosicao
-        WHERE fkUsuario = ?
+        LEFT JOIN jogador_favorito
+            ON fkJogador = idJogador
+            AND jogador_favorito.fkUsuario =
+                jogador_cadastrado.fkUsuario
+        WHERE jogador_cadastrado.fkUsuario = ?
         ORDER BY idJogador DESC;
     `;
 
     return database.executar(instrucaoSql, [fkUsuario]);
 }
 
+function favoritar(fkUsuario, fkJogador) {
+
+    let instrucaoSql = `
+        INSERT INTO jogador_favorito (fkUsuario, fkJogador)
+        SELECT fkUsuario, idJogador
+        FROM jogador_cadastrado
+        WHERE fkUsuario = ? AND idJogador = ?;
+    `;
+
+    return database.executar(instrucaoSql, [
+        fkUsuario,
+        fkJogador
+    ]);
+}
+
+function desfavoritar(fkUsuario, fkJogador) {
+
+    let instrucaoSql = `
+        DELETE FROM jogador_favorito
+        WHERE fkUsuario = ? AND fkJogador = ?;
+    `;
+
+    return database.executar(instrucaoSql, [
+        fkUsuario,
+        fkJogador
+    ]);
+}
+
 module.exports = {
     cadastrar,
-    listar
+    listar,
+    favoritar,
+    desfavoritar
 };
