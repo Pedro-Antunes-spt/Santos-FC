@@ -169,3 +169,20 @@ body {
 .voltar:hover {
     color: darkgoldenrod;
 }
+
+.btn-favorito {
+    background-color: transparent;
+    border: none;
+    font-size: 28px;
+    color: #999999;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-favorito:hover {
+    color: goldenrod;
+}
+
+.btn-favorito.favoritado {
+    color: goldenrod;
+}

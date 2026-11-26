@@ -83,6 +83,7 @@
                     <div>Idade</div>
                     <div>Camisa</div>
                     <div>Nota geral</div>
+                    <div>Favorito</div>
                 </div>
 
                 <div id="lista_jogadores">
@@ -221,6 +222,7 @@
                         let jogador = jogadores[i];
 
                         let linha = document.createElement("div");
+
                         linha.className = "linha";
 
                         let dados = [
@@ -235,18 +237,106 @@
                         for (let j = 0; j < dados.length; j++) {
 
                             let coluna = document.createElement("div");
+
                             coluna.textContent = dados[j];
 
                             linha.appendChild(coluna);
                         }
+
+                        let colunaFavorito = document.createElement("div");
+
+                        let estrela = document.createElement("button");
+
+                        estrela.type = "button";
+                        estrela.className = "btn-favorito";
+
+                        if (jogador.idFavorito != null) {
+
+                            estrela.innerHTML = "★";
+                            estrela.classList.add("favoritado");
+
+                        } else {
+
+                            estrela.innerHTML = "☆";
+
+                        }
+
+                        estrela.onclick = function () {
+
+                            estrela.disabled = true;
+
+                            alterarFavorito(
+                                jogador.idJogador,
+                                jogador.idFavorito,
+                                estrela
+                            );
+                        };
+
+                        colunaFavorito.appendChild(estrela);
+
+                        linha.appendChild(colunaFavorito);
 
                         lista_jogadores.appendChild(linha);
                     }
 
                 })
                 .catch(function (erro) {
+
                     console.log(erro);
-                    lista_jogadores.textContent = "Erro ao carregar jogadores!";
+
+                    lista_jogadores.textContent =
+                        "Erro ao carregar jogadores!";
+
+                });
+        }
+
+        function alterarFavorito(idJogador, idFavorito, estrela) {
+
+            let rota = "/jogadores/favoritar";
+            let metodo = "POST";
+
+            if (idFavorito != null) {
+
+                rota = "/jogadores/desfavoritar";
+                metodo = "DELETE";
+
+            }
+
+            fetch(rota, {
+
+                method: metodo,
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    idUsuarioServer: idUsuario,
+                    idJogadorServer: idJogador
+                })
+
+            })
+                .then(function (resposta) {
+
+                    if (resposta.ok) {
+
+                        listar();
+
+                    } else {
+
+                        estrela.disabled = false;
+                        alert("Erro ao alterar favorito!");
+
+                    }
+
+                })
+                .catch(function (erro) {
+
+                    estrela.disabled = false;
+                    console.log(erro);
+
+                    alert("Erro ao conectar com o servidor!");
+
                 });
         }
 
