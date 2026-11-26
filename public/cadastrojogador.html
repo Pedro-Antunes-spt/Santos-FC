@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/cadastrojogador.css">
 </head>
 
-<body>
+<body onload="listar()">
 
     <div class="container">
 
@@ -60,7 +60,7 @@
 
                 </div>
 
-                <button type="button" id="btn_cadastrar">
+                <button type="button" id="btn_cadastrar" onclick="cadastrar()">
                     + Cadastrar jogador
                 </button>
 
@@ -98,6 +98,159 @@
         </a>
 
     </div>
+
+    <script>
+
+        let idUsuario = sessionStorage.ID_USUARIO;
+
+        if (!idUsuario) {
+            window.location = "loginusuario.html";
+        }
+
+        function cadastrar() {
+
+            let nome = ipt_nome.value.trim();
+            let posicao = slc_posicao.value;
+            let idade = ipt_idade.value;
+            let camisa = ipt_camisa.value;
+            let nota = ipt_nota.value;
+
+            let mensagem = document.getElementById("mensagem_erro");
+
+            mensagem.style.color = "red";
+
+            if (nome == "" || posicao == "" || idade == "" ||
+                camisa == "" || nota == "") {
+
+                mensagem.innerHTML = "Preencha todos os campos!";
+                return false;
+            }
+
+            if (idade < 16 || idade > 50) {
+                mensagem.innerHTML = "A idade deve estar entre 16 e 50 anos!";
+                return false;
+            }
+
+            if (camisa < 1 || camisa > 99) {
+                mensagem.innerHTML = "A camisa deve estar entre 1 e 99!";
+                return false;
+            }
+
+            if (nota < 0 || nota > 100) {
+                mensagem.innerHTML = "A nota deve estar entre 0 e 100!";
+                return false;
+            }
+
+            if (btn_cadastrar.disabled) {
+                return false;
+            }
+
+            btn_cadastrar.disabled = true;
+
+            fetch("/jogadores/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    idUsuarioServer: idUsuario,
+                    nomeServer: nome,
+                    posicaoServer: posicao,
+                    idadeServer: idade,
+                    camisaServer: camisa,
+                    notaServer: nota
+                })
+            })
+                .then(function (resposta) {
+
+                    btn_cadastrar.disabled = false;
+
+                    if (resposta.ok) {
+
+                        mensagem.style.color = "green";
+                        mensagem.innerHTML = "Jogador cadastrado com sucesso!";
+
+                        ipt_nome.value = "";
+                        slc_posicao.value = "";
+                        ipt_idade.value = "";
+                        ipt_camisa.value = "";
+                        ipt_nota.value = "";
+
+                        listar();
+
+                    } else {
+                        resposta.text().then(function (erro) {
+                            mensagem.textContent = erro;
+                            console.log("Status:", resposta.status);
+                            console.log("Erro:", erro);
+                        });
+                    }
+
+                })
+                .catch(function (erro) {
+
+                    console.log(erro);
+                    btn_cadastrar.disabled = false;
+                    mensagem.innerHTML = "Erro ao conectar com o servidor!";
+
+                });
+        }
+
+        function listar() {
+
+            if (!idUsuario) {
+                return;
+            }
+
+            fetch(`/jogadores/listar/${idUsuario}`)
+                .then(function (resposta) {
+
+                    if (resposta.ok) {
+                        return resposta.json();
+                    }
+
+                    throw new Error("Erro ao listar jogadores!");
+
+                })
+                .then(function (jogadores) {
+
+                    lista_jogadores.innerHTML = "";
+
+                    for (let i = 0; i < jogadores.length; i++) {
+
+                        let jogador = jogadores[i];
+
+                        let linha = document.createElement("div");
+                        linha.className = "linha";
+
+                        let dados = [
+                            jogador.idJogador,
+                            jogador.nome,
+                            jogador.nomePosicao,
+                            jogador.idade,
+                            jogador.numeroCamisa,
+                            jogador.notaGeral
+                        ];
+
+                        for (let j = 0; j < dados.length; j++) {
+
+                            let coluna = document.createElement("div");
+                            coluna.textContent = dados[j];
+
+                            linha.appendChild(coluna);
+                        }
+
+                        lista_jogadores.appendChild(linha);
+                    }
+
+                })
+                .catch(function (erro) {
+                    console.log(erro);
+                    lista_jogadores.textContent = "Erro ao carregar jogadores!";
+                });
+        }
+
+    </script>
 
 </body>
 
