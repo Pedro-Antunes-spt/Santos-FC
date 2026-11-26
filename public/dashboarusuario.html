@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css/dashboard.css">
+
+    <title>Santos FC | Dashboard</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- BARRA LATERAL -->
+
+    <div class="lado-esquerdo">
+
+        <div class="conteudo-esquerda">
+
+            <div class="logo">
+                <img src="./assets/imgs/escudo.png" alt="Santos FC">
+                <h2>SANTOS FC</h2>
+            </div>
+
+            <div class="itens-selecao">
+
+                <div class="img-texto"
+                    onclick="window.location.href='cadastrojogador.html'">
+
+                    <span>Cadastrar jogador</span>
+
+                </div>
+
+                <div class="img-texto ativo"
+                    onclick="window.location.href='dashboard.html'">
+
+                    <span>Dashboard</span>
+
+                </div>
+
+            </div>
+
+            <div class="itens-botao">
+                <button onclick="sair()">Sair</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CONTEÚDO DA DASHBOARD -->
+
+    <main>
+
+        <div class="container">
+
+            <div class="lado-direito">
+
+                <!-- TOPO E MÉTRICAS -->
+
+                <div class="topo-dashboard">
+
+                    <div class="titulo-dashboard">
+                        <h1>Dashboard</h1>
+                        <p>Visão geral da plataforma</p>
+                    </div>
+
+                    <div class="grafico-metrica">
+
+                        <div class="titulo-metrica">
+                            <p>Métrica de classificação dos jogadores</p>
+                        </div>
+
+                        <div class="metricas">
+
+                            <div class="card-metrica-cinza">
+                                <p>Básico</p>
+                                <p>0 a 69</p>
+                            </div>
+
+                            <div class="card-metrica-preto">
+                                <p>Intermediário</p>
+                                <p>70 a 84</p>
+                            </div>
+
+                            <div class="card-metrica-dourado">
+                                <p>Elite</p>
+                                <p>85 a 100</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- INDICADORES GERAIS -->
+
+                <section class="indicadores-gerais">
+
+                    <div class="kpi-row">
+
+                        <div class="kpi">
+
+                            <span class="kpi-titulo">
+                                Total de usuários
+                            </span>
+
+                            <span class="kpi-info" id="kpi_usuarios">
+                                0
+                            </span>
+
+                            <span class="kpi-descricao">
+                                Usuários cadastrados na plataforma
+                            </span>
+
+                        </div>
+
+                        <div class="kpi">
+
+                            <span class="kpi-titulo">
+                                Jogadores cadastrados
+                            </span>
+
+                            <span class="kpi-info" id="kpi_jogadores">
+                                0
+                            </span>
+
+                            <span class="kpi-descricao">
+                                Total de jogadores criados
+                            </span>
+
+                        </div>
+
+                        <div class="kpi">
+
+                            <span class="kpi-titulo">
+                                Total de favoritos
+                            </span>
+
+                            <span class="kpi-info" id="kpi_favoritos">
+                                0
+                            </span>
+
+                            <span class="kpi-descricao">
+                                Jogadores adicionados aos favoritos
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- GRÁFICOS -->
+
+                <section class="analise-operacional">
+
+                    <!-- GRÁFICO DE BARRAS -->
+
+                    <div class="grafico-container">
+
+                        <div class="area-grafico">
+
+                            <div class="grafico-cabecalho">
+                                <h3>Jogadores por posição</h3>
+                            </div>
+
+                            <div class="canvas-container">
+                                <canvas id="grafico_barras"></canvas>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- GRÁFICO DOUGHNUT -->
+
+                    <div class="container-grafico-2">
+
+                        <div class="area-grafico-2">
+
+                            <div class="grafico-cabecalho">
+                                <h3>Classificação dos jogadores</h3>
+                            </div>
+
+                            <div class="conteudo-grafico-rosquinha">
+
+                                <div class="canvas-container-2">
+                                    <canvas id="grafico_doughnut"></canvas>
+                                </div>
+
+                                <div class="legendas-grafico-2">
+
+                                    <div class="linha-legenda elite">
+
+                                        <div class="dados-legenda">
+                                            <strong id="qtd_elite">0</strong>
+                                            <span id="porcentagem_elite">0%</span>
+                                        </div>
+
+                                        <h4>Elite</h4>
+
+                                    </div>
+
+                                    <div class="linha-legenda intermediario">
+
+                                        <div class="dados-legenda">
+                                            <strong id="qtd_intermediario">0</strong>
+                                            <span id="porcentagem_intermediario">0%</span>
+                                        </div>
+
+                                        <h4>Intermediário</h4>
+
+                                    </div>
+
+                                    <div class="linha-legenda basico">
+
+                                        <div class="dados-legenda">
+                                            <strong id="qtd_basico">0</strong>
+                                            <span id="porcentagem_basico">0%</span>
+                                        </div>
+
+                                        <h4>Básico</h4>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- LISTAGEM DE JOGADORES -->
+
+                <div class="container-jogadores">
+
+                    <div class="card-titulo">
+                        <h3>Últimos jogadores cadastrados</h3>
+                    </div>
+
+                    <div class="card-relatorio">
+
+                        <div class="linha-titulo">
+
+                            <span>ID</span>
+                            <span>Nome</span>
+                            <span>Posição</span>
+                            <span>Idade</span>
+                            <span>Camisa</span>
+                            <span>Nota geral</span>
+
+                        </div>
+
+                        <div id="lista_jogadores">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+
+        if (!sessionStorage.ID_USUARIO) {
+            window.location = "loginusuario.html";
+        }
+
+        function sair() {
+            sessionStorage.clear();
+            window.location = "loginusuario.html";
+        }
+
+    </script>
+
+</body>
+
+</html>
