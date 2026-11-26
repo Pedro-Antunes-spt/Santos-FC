@@ -68,7 +68,61 @@ function listar(req, res) {
     }
 }
 
+function favoritar(req, res) {
+
+    let fkUsuario = Number(req.body.idUsuarioServer);
+    let fkJogador = Number(req.body.idJogadorServer);
+
+    if (!Number.isInteger(fkUsuario) || fkUsuario < 1 ||
+        !Number.isInteger(fkJogador) || fkJogador < 1) {
+
+        res.status(400).send("Usuário ou jogador inválido!");
+
+    } else {
+
+        jogadorModel.favoritar(fkUsuario, fkJogador)
+            .then(function (resultado) {
+
+                if (resultado.affectedRows == 0) {
+                    res.status(404).send("Jogador não encontrado!");
+                } else {
+                    res.json(resultado);
+                }
+
+            })
+            .catch(function (erro) {
+                console.log("Erro ao favoritar:", erro.code);
+                res.status(500).send("Erro ao favoritar jogador!");
+            });
+    }
+}
+
+function desfavoritar(req, res) {
+
+    let fkUsuario = Number(req.body.idUsuarioServer);
+    let fkJogador = Number(req.body.idJogadorServer);
+
+    if (!Number.isInteger(fkUsuario) || fkUsuario < 1 ||
+        !Number.isInteger(fkJogador) || fkJogador < 1) {
+
+        res.status(400).send("Usuário ou jogador inválido!");
+
+    } else {
+
+        jogadorModel.desfavoritar(fkUsuario, fkJogador)
+            .then(function (resultado) {
+                res.json(resultado);
+            })
+            .catch(function (erro) {
+                console.log("Erro ao desfavoritar:", erro.code);
+                res.status(500).send("Erro ao desfavoritar jogador!");
+            });
+    }
+}
+
 module.exports = {
     cadastrar,
-    listar
+    listar,
+    favoritar,
+    desfavoritar
 };

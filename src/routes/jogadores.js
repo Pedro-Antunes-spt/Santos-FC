@@ -11,4 +11,12 @@ router.get("/listar/:idUsuario", function (req, res) {
     jogadorController.listar(req, res);
 });
 
+router.post("/favoritar", function (req, res) {
+    jogadorController.favoritar(req, res);
+});
+
+router.delete("/desfavoritar", function (req, res) {
+    jogadorController.desfavoritar(req, res);
+});
+
 module.exports = router;
