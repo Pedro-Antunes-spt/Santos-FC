@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Jogadores - Santos FC</title>
+    <link rel="stylesheet" href="./css/cadastrojogador.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="cabecalho">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Santos_Logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail_unscaled&_=20230206125350"
+                alt="Santos FC">
+            <h1>Cadastro de jogadores</h1>
+        </div>
+
+        <div class="card-cadastro">
+
+            <form>
+
+                <div class="campos">
+
+                    <div class="campo">
+                        <label for="ipt_nome">Nome</label>
+                        <input type="text" id="ipt_nome" placeholder="Nome do jogador" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="slc_posicao">Posição</label>
+
+                        <select id="slc_posicao" required>
+                            <option value="">Selecione</option>
+                            <option value="1">Goleiro</option>
+                            <option value="2">Zagueiro</option>
+                            <option value="3">Lateral</option>
+                            <option value="4">Volante</option>
+                            <option value="5">Meio-campista</option>
+                            <option value="6">Atacante</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="ipt_idade">Idade</label>
+                        <input type="number" id="ipt_idade" min="16" max="50" placeholder="Ex.: 22" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="ipt_camisa">Camisa</label>
+                        <input type="number" id="ipt_camisa" min="1" max="99" placeholder="Ex.: 10" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="ipt_nota">Nota geral</label>
+                        <input type="number" id="ipt_nota" min="0" max="100" placeholder="0 a 100" required>
+                    </div>
+
+                </div>
+
+                <button type="button" id="btn_cadastrar">
+                    + Cadastrar jogador
+                </button>
+
+                <div id="mensagem_erro"></div>
+
+            </form>
+
+        </div>
+
+        <div class="card-tabela">
+
+            <h2>Jogadores cadastrados</h2>
+
+            <div class="tabela">
+
+                <div class="linha cabecalho-tabela">
+                    <div>ID</div>
+                    <div>Nome</div>
+                    <div>Posição</div>
+                    <div>Idade</div>
+                    <div>Camisa</div>
+                    <div>Nota geral</div>
+                </div>
+
+                <div id="lista_jogadores">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <a class="voltar" href="dashboard.html">
+            Voltar para a dashboard
+        </a>
+
+    </div>
+
+</body>
+
+</html>

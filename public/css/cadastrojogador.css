@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Slab', serif;
+}
+
+body {
+    background-color: white;
+    color: black;
+}
+
+.container {
+    width: 90%;
+    margin: 30px auto;
+}
+
+/* Cabeçalho */
+
+.cabecalho {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.cabecalho img {
+    width: 100px;
+}
+
+.cabecalho h1 {
+    font-size: 40px;
+    margin-top: 15px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid goldenrod;
+}
+
+/* Card de cadastro */
+
+.card-cadastro {
+    border: 2px solid goldenrod;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.campos {
+    display: flex;
+    gap: 20px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    gap: 10px;
+}
+
+.campo label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    height: 45px;
+    padding: 10px;
+    border: 1px solid #bcbcbc;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+}
+
+.campo input:focus,
+.campo select:focus {
+    outline: 2px solid goldenrod;
+}
+
+/* Botão de cadastro */
+
+#btn_cadastrar {
+    display: block;
+    margin: 30px auto 0;
+    padding: 12px 30px;
+    background-color: goldenrod;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#btn_cadastrar:hover {
+    background-color: darkgoldenrod;
+}
+
+/* Mensagem de erro */
+
+#mensagem_erro {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Card de jogadores cadastrados */
+
+.card-tabela {
+    border: 1px solid #bcbcbc;
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.card-tabela h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.tabela {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Linhas e colunas */
+
+.linha {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.linha div {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+    overflow-wrap: break-word;
+    font-size: 18px;
+}
+
+.cabecalho-tabela {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+#lista_jogadores .linha:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+/* Link para a dashboard */
+
+.voltar {
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.voltar:hover {
+    color: darkgoldenrod;
+}
